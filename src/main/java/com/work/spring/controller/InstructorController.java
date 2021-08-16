@@ -8,11 +8,11 @@ import com.work.spring.service.CourseService;
 import com.work.spring.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
+
 
 @RestController
 @RequestMapping("/instructor")
@@ -91,8 +91,6 @@ public class InstructorController {
         Course c = courseService.findById(courseId);
         i.getCourses().add(c);
         c.setInstructor(i);
-        courseService.update(c);
-        instructorService.update(i);
-        return new ResponseEntity<>(instructorService.findById(instructorId), HttpStatus.OK);
+        return new ResponseEntity<>(i, HttpStatus.OK);
     }
 }

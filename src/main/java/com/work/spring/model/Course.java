@@ -1,7 +1,8 @@
 package com.work.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,11 +20,12 @@ public class Course {
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students = new HashSet<Student>();
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "instructor_id", nullable = true)
     private Instructor instructor;
 
-    public Course() {
+    public Course(){
     }
 
     public Course(String courseName,int courseCredit) {
