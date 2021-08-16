@@ -3,7 +3,7 @@
 
 ![homework](https://user-images.githubusercontent.com/45206582/129493929-01f3b3a7-793f-4057-959a-ac5fb05ad8a8.png)
 
-#Instructor Path
+# Instructor Path
 | Request 	|                  Route                  	|                                             Body                                            	|                        Description                        	|
 |:-------:	|:---------------------------------------:	|:-------------------------------------------------------------------------------------------:	|:---------------------------------------------------------:	|
 |   GET   	|               /instructor               	|                                            EMPTY                                            	|                    List all instructor                    	|
@@ -13,7 +13,7 @@
 |   PUT   	|               /instructor               	| { id:":id", name:":name", address:"address", phoneNumber:":phoneNumber", salary:":salary" } 	|                    Update a instructor                    	|
 |  DELETE 	|            /instructor/{:id}            	|                                            EMPTY                                            	|                    Delete a instructor                    	|
 
-#Course Path
+# Course Path
 | Request 	|     Route     	|                                 Body                                 	|   Description   	|
 |:-------:	|:-------------:	|:--------------------------------------------------------------------:	|:---------------:	|
 |   GET   	|    /course    	|                                 EMPTY                                	| List all course 	|
@@ -22,7 +22,7 @@
 |   PUT   	|    /course    	| { id:":id" ,courseName:":courseName", courseCredit:":courseCredit" } 	| Update a course 	|
 |  DELETE 	| /course/{:id} 	|                                 EMPTY                                	| Delete a course 	|
 
-#Student Path
+# Student Path
 
 | Request 	|      Route     	|                              Body                              	|    Description   	|
 |:-------:	|:--------------:	|:--------------------------------------------------------------:	|:----------------:	|
