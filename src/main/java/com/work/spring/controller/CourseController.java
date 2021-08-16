@@ -20,16 +20,19 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+    //That's method get all course
     @GetMapping(value = "")
     public ResponseEntity<List<Course>> getAllCourse(){
         return new ResponseEntity<>(courseService.getAll(), HttpStatus.OK);
     }
 
+    //That's method get a course
     @GetMapping(value = "/{id}")
     public ResponseEntity<Course> findCourse(@PathVariable Long id){
         return new ResponseEntity<>(courseService.findById(id),HttpStatus.OK);
     }
 
+    //That's method add a course
     @PostMapping(value = "")
     public ResponseEntity<Course> addCourse(@RequestBody Course course){
         Course c = new Course(course.getCourseName(),course.getCourseCredit());
@@ -37,6 +40,7 @@ public class CourseController {
         return new ResponseEntity<>(c,HttpStatus.OK);
     }
 
+    //That's method update a courses
     @PutMapping(value = "")
     public ResponseEntity<Course> updateCourse(@RequestBody Course course){
         Course c = courseService.findById(course.getId());
@@ -49,6 +53,7 @@ public class CourseController {
         return new ResponseEntity<>(courseService.update(c),HttpStatus.OK);
     }
 
+    //That's method delete a course
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<String> deleteCourse(@PathVariable Long id){
         courseService.delete(id);

@@ -32,17 +32,19 @@ public class InstructorController {
         this.instructorService = instructorService;
     }
 
-    //That method is getting all instructor .
+    //That's method get all intructors
     @GetMapping("")
     public ResponseEntity<List<Instructor>> getAllInstructor(){
         return new ResponseEntity<>(instructorService.getAll(), HttpStatus.OK);
     }
 
+    //That's method get a instructor
     @GetMapping(value = "/{id}")
     public ResponseEntity<Instructor> findInstructor(@PathVariable Long id){
         return new ResponseEntity<>(instructorService.findById(id),HttpStatus.OK);
     }
 
+    //That's method add a instructor
     @PostMapping("")
     public ResponseEntity<List<Instructor>> addInstructor(@RequestBody Instructor instructor){
          if(instructor.getType()){
@@ -54,6 +56,7 @@ public class InstructorController {
         return new ResponseEntity<>(instructorService.getAll(),HttpStatus.OK);
     }
 
+    //That's method update a instructor
     @PutMapping(value = "")
     public ResponseEntity<Instructor> updateInstructor(@RequestBody Instructor instructor){
         Instructor i = instructorService.findById(instructor.getId());
@@ -72,12 +75,14 @@ public class InstructorController {
         return new ResponseEntity<>(instructorService.update(i),HttpStatus.OK);
     }
 
+    //That's method delete a instructor
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<String> deleteInstructor(@PathVariable Long id){
         instructorService.delete(id);
         return new ResponseEntity<>("info : Deleted instructor",HttpStatus.OK);
     }
 
+    //That's method add a course in instructor and a instructor in course
     @PostMapping(value = "/{instructorId}/{courseId}")
     public ResponseEntity<Instructor> addCourse(@PathVariable(value = "instructorId") Long instructorId,
                                                 @PathVariable(value = "courseId") Long courseId)
