@@ -47,32 +47,14 @@ public class InstructorController {
     //That's method add a instructor
     @PostMapping("")
     public ResponseEntity<List<Instructor>> addInstructor(@RequestBody Instructor instructor){
-         if(instructor.getType()){
-              instructorService.create(new PermanentInstructor(instructor.getName(),instructor.getAddress(),instructor.getPhoneNumber(),instructor.getSalary()));
-          }else{
-              instructorService.create(new VisitorInstructor(instructor.getName(),instructor.getAddress(),instructor.getPhoneNumber(),instructor.getSalary()));
-          }
-
+        instructorService.create(instructor);
         return new ResponseEntity<>(instructorService.getAll(),HttpStatus.OK);
     }
 
     //That's method update a instructor
     @PutMapping(value = "")
     public ResponseEntity<Instructor> updateInstructor(@RequestBody Instructor instructor){
-        Instructor i = instructorService.findById(instructor.getId());
-        if(instructor.getName() != null){
-            i.setName(instructor.getName());
-        }
-        if (instructor.getAddress() != null){
-            i.setAddress(instructor.getAddress());
-        }
-        if(instructor.getPhoneNumber() != null){
-            i.setPhoneNumber(instructor.getPhoneNumber());
-        }
-        if(instructor.getSalary() != null){
-            i.setSalary(instructor.getSalary());
-        }
-        return new ResponseEntity<>(instructorService.update(i),HttpStatus.OK);
+        return new ResponseEntity<>(instructorService.update(instructor),HttpStatus.OK);
     }
 
     //That's method delete a instructor

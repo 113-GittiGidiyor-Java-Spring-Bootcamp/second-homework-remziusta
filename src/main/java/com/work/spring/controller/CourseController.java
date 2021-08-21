@@ -43,14 +43,7 @@ public class CourseController {
     //That's method update a courses
     @PutMapping(value = "")
     public ResponseEntity<Course> updateCourse(@RequestBody Course course){
-        Course c = courseService.findById(course.getId());
-        if(course.getCourseName() != null){
-            c.setCourseName(course.getCourseName());
-        }
-        if(course.getCourseCredit() != null){
-            c.setCourseCredit(course.getCourseCredit());
-        }
-        return new ResponseEntity<>(courseService.update(c),HttpStatus.OK);
+        return new ResponseEntity<>(courseService.update(course),HttpStatus.OK);
     }
 
     //That's method delete a course

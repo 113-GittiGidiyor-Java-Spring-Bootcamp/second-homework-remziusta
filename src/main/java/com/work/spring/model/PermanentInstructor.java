@@ -25,12 +25,4 @@ public class PermanentInstructor extends Instructor{
     public void setFixedSalary(Double fixedSalary) {
         this.fixedSalary = fixedSalary;
     }
-
-    public Double getSalary() {
-        return fixedSalary;
-    }
-
-    public void setSalary(Double fixedSalary) {
-        this.fixedSalary = fixedSalary;
-    }
 }

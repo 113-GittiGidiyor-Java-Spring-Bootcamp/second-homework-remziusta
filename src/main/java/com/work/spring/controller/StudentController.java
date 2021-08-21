@@ -43,17 +43,7 @@ public class StudentController {
     //That's method update a student
     @PutMapping(value = "")
     public ResponseEntity<Student> updateStudent(@RequestBody Student student){
-        Student s = studentService.findById(student.getId());
-        if(student.getName() != null){
-            s.setName(student.getName());
-        }
-        if(student.getBirthDate() != null){
-            s.setBirthDate(student.getBirthDate());
-        }
-        if(student.getAge() != null){
-            s.setAge(student.getAge());
-        }
-        return new ResponseEntity<>(studentService.update(s),HttpStatus.OK);
+        return new ResponseEntity<>(studentService.update(student),HttpStatus.OK);
     }
 
     //That's method delete a student

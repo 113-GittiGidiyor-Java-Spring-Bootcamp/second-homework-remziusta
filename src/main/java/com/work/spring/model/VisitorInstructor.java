@@ -24,12 +24,4 @@ public class VisitorInstructor extends Instructor{
     public void setHourlySalary(Double hourlySalary) {
         this.hourlySalary = hourlySalary;
     }
-
-    public Double getSalary() {
-        return hourlySalary;
-    }
-
-    public void setSalary(Double hourlySalary) {
-        this.hourlySalary = hourlySalary;
-    }
 }

@@ -1,9 +1,7 @@
 package com.work.spring.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,6 +9,14 @@ import java.util.Set;
 
 
 @Entity
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = PermanentInstructor.class, name = "PermanentInstructor"),
+        @JsonSubTypes.Type(value = VisitorInstructor.class, name = "VisitorInstructor")
+})
 public class Instructor {
 
     @Id
@@ -26,12 +32,6 @@ public class Instructor {
     private String address;
 
     private String phoneNumber;
-
-    @Transient
-    private Boolean type;
-
-    @Transient
-    private Double salary;
 
     public Instructor() {}
 
@@ -73,25 +73,7 @@ public class Instructor {
         this.phoneNumber = phoneNumber;
     }
 
-    @JsonIgnore
-    public Boolean getType() {
-        return type;
-    }
 
-    @JsonProperty
-    public void setType(Boolean type) {
-        this.type = type;
-    }
-
-    @JsonIgnore
-    public Double getSalary() {
-        return salary;
-    }
-
-    @JsonProperty
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
 
     public Set<Course> getCourses() {
         return courses;
